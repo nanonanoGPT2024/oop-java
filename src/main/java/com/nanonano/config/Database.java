@@ -6,9 +6,12 @@ import java.sql.SQLException;
 
 public class Database {
     
-    private static final String URL = "jdbc:mysql://180.178.102.181:3306/mini_payroll";
-    private static final String USER = "root";
-    private static final String PASSWORD = "dev@dika";
+
+
+    private static final Dotenv dotenv = Dotenv.load(); // Muat variabel lingkungan dari .env
+    private static final String URL = dotenv.get("DB_URL"); // Ambil URL dari .env
+    private static final String USER = dotenv.get("DB_USER"); // Ambil USER dari .env
+    private static final String PASSWORD = dotenv.get("DB_PASSWORD"); 
 
 
     public static Connection getConnection() {
